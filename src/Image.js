@@ -1,6 +1,6 @@
 const Image = ({ image }) => {
   return (
-    <div className="card card-bordered my-2 inline-block shadow-2xl bg-neutral">
+    <div className="card card-bordered my-3 mx-2 inline-block shadow-2xl bg-neutral hover:scale-105 transition-transform duraiton-75">
       <a href={image.links.html} target="_blank" rel="noreferrer">
         <img src={image.urls.regular} alt={image.alt_description} />
       </a>
