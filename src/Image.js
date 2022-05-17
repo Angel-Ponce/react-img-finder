@@ -1,7 +1,4 @@
-import { useState } from "react";
-
 const Image = ({ image }) => {
-  const [likesHover, setLikesHover] = useState(false);
   return (
     <div className="card card-bordered my-2 inline-block shadow-2xl bg-neutral">
       <a href={image.links.html} target="_blank" rel="noreferrer">
@@ -9,7 +6,7 @@ const Image = ({ image }) => {
       </a>
       <div className="card-body p-6">
         {image.alt_description ?? "No description provided."}
-        <div className="flex justify-center items-center py-2 gap-2">
+        <div className="flex justify-center items-center py-2 gap-2 max-h-10">
           {image.tags.map((t, i) => (
             <div className="badge badge-info" key={i}>
               {t.title}
@@ -17,15 +14,11 @@ const Image = ({ image }) => {
           ))}
         </div>
         <div className="divider opacity-25"></div>
-        Thanks by, {image.user.first_name}
-        <div className="flex justify-end align-bottom">
-          <div
-            className="badge badge-primary"
-            onMouseEnter={() => setLikesHover(true)}
-            onMouseLeave={() => setLikesHover(false)}
-          >
+        Thanks by, {image.user.first_name || ""}
+        <div className="flex justify-end align-bottom group">
+          <div className="badge badge-primary">
             ♥{" "}
-            <div className={`likes text-base ${!likesHover ? "hidden" : ""}`}>
+            <div className={`likes text-base hidden group-hover:block`}>
               {image.likes}
             </div>
           </div>
